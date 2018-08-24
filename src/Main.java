@@ -6,7 +6,7 @@ public class Main {
         Menu menu = new Menu();
         HumanRouter humanRouter = new HumanRouter();
 
-        while (!menu.theEndProgram){
+        while (!humanRouter.theEndProgram){
             menu.mainMenu();
             humans = humanRouter.router(humans);
         }

@@ -1,6 +1,7 @@
 public class HumanRouter {
     Menu menu = new Menu();
     HumanRedactor humanRedactor = new HumanRedactor();
+    boolean theEndProgram = false;
 
     public Human[] router(Human[] humans){
         String command = menu.readConsoleValue();
@@ -13,7 +14,7 @@ public class HumanRouter {
         }else if(command.equalsIgnoreCase("d")){
             humans = deleteHumanRouting(humans);
         }else if(command.equalsIgnoreCase("exit")){
-            menu.theEndProgram = true;
+            theEndProgram = true;
         }else{
             System.out.println("Incorrect command try again");
         }
