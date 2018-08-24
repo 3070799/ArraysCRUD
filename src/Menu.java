@@ -35,8 +35,7 @@ public class Menu {
 
         System.out.println("Please enter value for create element: ");
         value = readConsoleValue();
-        arr = redactor.create(arr,value);
-        return arr;
+        return redactor.create(arr,value);
     }
     public void readElement(String[] arr){
         redactor.read(arr);
@@ -49,22 +48,18 @@ public class Menu {
         index = Integer.parseInt(readConsoleValue());
         System.out.println("Please enter new value for update element: ");
         value = readConsoleValue();
-        arr = redactor.update(arr,index,value);
-        return arr;
+        return redactor.update(arr,index,value);
+
     }
     public String[] delete(String[] arr){
         int index;
 
         System.out.println("Please enter index for delete element: ");
         index = Integer.parseInt(readConsoleValue());
-        arr = redactor.delete(arr,index);
-        return arr;
+        return redactor.delete(arr,index);
     }
     public String readConsoleValue(){
-        String value;
-
         Scanner scanner = new Scanner(System.in);
-        value = scanner.nextLine();
-        return value;
+        return scanner.nextLine();
     }
 }
