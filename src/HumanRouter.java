@@ -3,26 +3,26 @@ public class HumanRouter {
     HumanRedactor humanRedactor = new HumanRedactor();
     boolean theEndProgram = false;
 
-    public Human[] router(Human[] humans){
+    public Human[] router(Human[] humans) {
         String command = menu.readConsoleValue();
-        if (command.equalsIgnoreCase("c")){
+        if (command.equalsIgnoreCase("c")) {
             humans = addHumanRouting(humans);
-        }else if(command.equalsIgnoreCase("r")){
+        } else if (command.equalsIgnoreCase("r")) {
             readHumansRouter(humans);
-        }else if(command.equalsIgnoreCase("u")){
+        } else if (command.equalsIgnoreCase("u")) {
             humans = updateHumanRouting(humans);
-        }else if(command.equalsIgnoreCase("d")){
+        } else if (command.equalsIgnoreCase("d")) {
             humans = deleteHumanRouting(humans);
-        }else if(command.equalsIgnoreCase("exit")){
+        } else if (command.equalsIgnoreCase("exit")) {
             theEndProgram = true;
-        }else{
+        } else {
             System.out.println("Incorrect command try again");
         }
 
         return humans;
     }
 
-    public Human[] addHumanRouting(Human[] humans){
+    private Human[] addHumanRouting(Human[] humans) {
         Human tempHuman = new Human();
 
         System.out.println("Enter Data for new Human");
@@ -33,19 +33,19 @@ public class HumanRouter {
         System.out.println("age");
         tempHuman.setAge(Integer.parseInt(menu.readConsoleValue()));
 
-        return humanRedactor.addHuman(humans,tempHuman);
+        return humanRedactor.addHuman(humans, tempHuman);
     }
 
-    public void readHumansRouter(Human[] human){
+    private void readHumansRouter(Human[] human) {
         humanRedactor.readHumans(human);
     }
 
-    public Human[] updateHumanRouting(Human[] humans){
+    private Human[] updateHumanRouting(Human[] humans) {
         Human human;
 
         System.out.println("Enter Data for update Human");
         System.out.println("Enter ID for update");
-        human = humanRedactor.findById(humans,Integer.parseInt(menu.readConsoleValue()));
+        human = humanRedactor.findById(humans, Integer.parseInt(menu.readConsoleValue()));
         System.out.println("Enter new Name");
         human.setName(menu.readConsoleValue());
         System.out.println("Enter new LastName");
@@ -53,11 +53,11 @@ public class HumanRouter {
         System.out.println("Enter new age");
         human.setAge(Integer.parseInt(menu.readConsoleValue()));
 
-        return humanRedactor.updateHuman(humans,human);
+        return humanRedactor.updateHuman(humans, human);
     }
 
-    public Human [] deleteHumanRouting(Human[] humans){
+    private Human[] deleteHumanRouting(Human[] humans) {
         System.out.println("Please enter ID for delete Human");
-        return humanRedactor.deleteHuman(humans,Integer.parseInt(menu.readConsoleValue()));
+        return humanRedactor.deleteHuman(humans, Integer.parseInt(menu.readConsoleValue()));
     }
 }
