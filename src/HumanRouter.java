@@ -3,6 +3,16 @@ public class HumanRouter {
     HumanRedactor humanRedactor = new HumanRedactor();
     boolean theEndProgram = false;
 
+    public void mainMenu() {
+        System.out.println("Menu: \n" +
+                "please enter command for action \n" +
+                "c - create \n" +
+                "r - read \n" +
+                "u - update \n" +
+                "d - delete \n" +
+                "sort - sort array \n" +
+                "exit - for finish program");
+    }
     public Human[] router(Human[] humans) {
         String command = menu.readConsoleValue();
         if (command.equalsIgnoreCase("c")) {
@@ -13,7 +23,9 @@ public class HumanRouter {
             humans = updateHumanRouting(humans);
         } else if (command.equalsIgnoreCase("d")) {
             humans = deleteHumanRouting(humans);
-        } else if (command.equalsIgnoreCase("exit")) {
+        }else if (command.equalsIgnoreCase("sort")){
+            humans = sortHumanRouting(humans);
+        }else if (command.equalsIgnoreCase("exit")) {
             theEndProgram = true;
         } else {
             System.out.println("Incorrect command try again");
@@ -71,4 +83,14 @@ public class HumanRouter {
         }
         return humanRedactor.deleteHuman(humans, human);
     }
+    private Human[] sortHumanRouting(Human[] humans){
+        System.out.println("What parameter to sort array? \n" +
+                "id - sort by ID");
+        String command = menu.readConsoleValue();
+        if (command.equalsIgnoreCase("id")){
+            humans = humanRedactor.sortHumanID(humans);
+        }
+
+        return humans;
+        }
 }
