@@ -12,13 +12,15 @@ public class HumanRedactor {
 
     public void readHumans(Human[] humans) {
         for (int i = 0; i < humans.length; i++) {
-            System.out.println(humans[i]);
+            if (humans[i] != null) {
+                System.out.println(humans[i]);
+            }
         }
     }
 
     public Human[] updateHuman(Human[] humans, Human human) {
         for (int i = 0; i < humans.length; i++) {
-            if (humans[i].getId() == human.getId()) {
+            if (humans[i] != null && humans[i].getId() == human.getId()) {
                 humans[i] = human;
                 break;
             }
@@ -28,18 +30,18 @@ public class HumanRedactor {
 
     public Human findById(Human[] humans, int id) {
         Human human = null;
-        for (Human human1 : humans) {
-            if (human1.getId() == id) {
-                human = human1;
+        for (int i = 0; i <humans.length ; i++) {
+            if (humans[i] != null && humans[i].getId() == id) {
+                human = humans[i];
                 break;
             }
         }
         return human;
     }
 
-    public Human[] deleteHuman(Human[] humans, int id) {
+    public Human[] deleteHuman(Human[] humans, Human human) {
         for (int i = 0; i < humans.length; i++) {
-            if (humans[i].getId() == id) {
+            if (humans[i] != null && humans[i].getId() == human.getId()) {
                 humans[i] = null;
                 break;
             }

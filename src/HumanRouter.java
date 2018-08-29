@@ -46,18 +46,29 @@ public class HumanRouter {
         System.out.println("Enter Data for update Human");
         System.out.println("Enter ID for update");
         human = humanRedactor.findById(humans, Integer.parseInt(menu.readConsoleValue()));
-        System.out.println("Enter new Name");
-        human.setName(menu.readConsoleValue());
-        System.out.println("Enter new LastName");
-        human.setLastName(menu.readConsoleValue());
-        System.out.println("Enter new age");
-        human.setAge(Integer.parseInt(menu.readConsoleValue()));
+        if(human != null) {
+            System.out.println("Enter new Name");
+            human.setName(menu.readConsoleValue());
+            System.out.println("Enter new LastName");
+            human.setLastName(menu.readConsoleValue());
+            System.out.println("Enter new age");
+            human.setAge(Integer.parseInt(menu.readConsoleValue()));
+        }else {
+            System.out.println("Incorrect ID");
+            return humans;
+        }
 
         return humanRedactor.updateHuman(humans, human);
     }
 
     private Human[] deleteHumanRouting(Human[] humans) {
+        Human human;
         System.out.println("Please enter ID for delete Human");
-        return humanRedactor.deleteHuman(humans, Integer.parseInt(menu.readConsoleValue()));
+        human = humanRedactor.findById(humans,Integer.parseInt(menu.readConsoleValue()));
+        if(human == null){
+            System.out.println("Incorrect ID");
+            return humans;
+        }
+        return humanRedactor.deleteHuman(humans, human);
     }
 }
