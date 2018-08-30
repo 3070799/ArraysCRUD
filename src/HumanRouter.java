@@ -89,6 +89,7 @@ public class HumanRouter {
         String command = menu.readConsoleValue();
         if (command.equalsIgnoreCase("id")){
             humans = humanRedactor.sortHumanID(humans);
+            humanRedactor.readHumans(humans);
         }
 
         return humans;
